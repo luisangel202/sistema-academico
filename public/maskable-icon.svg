@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="cap" x1="200" y1="120" x2="312" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Full-bleed background for maskable safe zone -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+
+  <!-- Book base -->
+  <rect x="130" y="195" width="252" height="200" rx="20" fill="white" opacity="0.12"/>
+  <!-- Left page -->
+  <rect x="130" y="195" width="122" height="200" rx="20" fill="white" opacity="0.20"/>
+  <!-- Spine -->
+  <rect x="248" y="195" width="16" height="200" fill="white" opacity="0.40"/>
+  <!-- Right page -->
+  <rect x="260" y="195" width="122" height="200" rx="20" fill="white" opacity="0.20"/>
+
+  <!-- Left page lines -->
+  <line x1="155" y1="235" x2="225" y2="235" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.65"/>
+  <line x1="155" y1="265" x2="225" y2="265" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.65"/>
+  <line x1="155" y1="295" x2="225" y2="295" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.65"/>
+  <line x1="155" y1="325" x2="205" y2="325" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+
+  <!-- Right page lines -->
+  <line x1="287" y1="235" x2="357" y2="235" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.65"/>
+  <line x1="287" y1="265" x2="357" y2="265" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.65"/>
+  <line x1="287" y1="295" x2="357" y2="295" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.65"/>
+  <line x1="287" y1="325" x2="337" y2="325" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+
+  <!-- Graduation cap -->
+  <polygon points="256,115 310,145 256,175 202,145" fill="url(#cap)"/>
+  <rect x="304" y="145" width="11" height="40" rx="5.5" fill="#93c5fd"/>
+  <circle cx="309.5" cy="190" r="9" fill="#93c5fd"/>
+</svg>

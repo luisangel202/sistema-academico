@@ -1,0 +1,615 @@
+// ============================================================
+// DATOS SIMULADOS - Sistema Académico Multi-Institución
+// ============================================================
+
+export const instituciones = [
+  {
+    id: 1,
+    // Identificación
+    codigo: "IE001",
+    codigoDANE: "105045000123",
+    nit: "890.980.123-4",
+    codigoSecretaria: "ANT-001",
+    nombre: "Institución Educativa Rural El Progreso",
+    naturaleza: "oficial",
+    caracter: "academico",
+    jornadas: ["mañana", "tarde"],
+    // Ubicación
+    departamento: "Antioquia",
+    municipio: "Apartadó",
+    zona: "rural",
+    direccion: "Vereda El Progreso, Km 5 vía Apartadó-Turbo",
+    barrio: "Vereda El Progreso",
+    // Contacto
+    telefono: "6048520001",
+    correo: "ie.elprogreso@edu.antioquia.gov.co",
+    sitioWeb: "",
+    // Rector
+    rector: "Hernando Zapata Ríos",
+    rectordocumento: "71234567",
+    rectorcorreo: "h.zapata@ie.elprogreso.edu.co",
+    rectortelefono: "3001234567",
+    rectorresolucion: "Res. 001234 de 2022",
+    // Académico
+    niveles: ["preescolar", "primaria", "secundaria", "media"],
+    grados: ["transicion","1","2","3","4","5","6","7","8","9","10","11"],
+    sedes: 3,
+    modeloPedagogico: "Escuela Nueva",
+    // Normativo
+    resolucionAprobacion: "Res. 005678 de 2018",
+    secretariaEducacion: "Secretaría de Educación de Antioquia",
+    codigoETC: "ANT",
+    // Sistema
+    activa: true,
+    licencia: "premium",
+    vencimiento: "2026-12-31",
+    estudiantes: 320,
+    docentes: 18,
+  },
+  {
+    id: 2,
+    codigo: "IE002",
+    codigoDANE: "105837000456",
+    nit: "890.980.456-7",
+    codigoSecretaria: "ANT-002",
+    nombre: "Colegio Rural San José",
+    naturaleza: "oficial",
+    caracter: "tecnico-academico",
+    jornadas: ["mañana"],
+    departamento: "Antioquia",
+    municipio: "Turbo",
+    zona: "rural",
+    direccion: "Corregimiento Nueva Colonia, Calle 5 #3-20",
+    barrio: "Corregimiento Nueva Colonia",
+    telefono: "6048570002",
+    correo: "col.sanjose@edu.antioquia.gov.co",
+    sitioWeb: "",
+    rector: "Luz Marina Córdoba",
+    rectordocumento: "43567890",
+    rectorcorreo: "l.cordoba@col.sanjose.edu.co",
+    rectortelefono: "3109876543",
+    rectorresolucion: "Res. 002345 de 2021",
+    niveles: ["primaria", "secundaria", "media"],
+    grados: ["1","2","3","4","5","6","7","8","9","10","11"],
+    sedes: 2,
+    modeloPedagogico: "Postprimaria",
+    resolucionAprobacion: "Res. 003456 de 2016",
+    secretariaEducacion: "Secretaría de Educación de Antioquia",
+    codigoETC: "ANT",
+    activa: true,
+    licencia: "basica",
+    vencimiento: "2026-06-30",
+    estudiantes: 210,
+    docentes: 12,
+  },
+  {
+    id: 3,
+    codigo: "IE003",
+    codigoDANE: "105148000789",
+    nit: "890.980.789-1",
+    codigoSecretaria: "ANT-003",
+    nombre: "Escuela Rural La Esperanza",
+    naturaleza: "oficial",
+    caracter: "academico",
+    jornadas: ["mañana"],
+    departamento: "Antioquia",
+    municipio: "Carepa",
+    zona: "rural",
+    direccion: "Vereda La Esperanza s/n",
+    barrio: "Vereda La Esperanza",
+    telefono: "",
+    correo: "esc.laesperanza@edu.antioquia.gov.co",
+    sitioWeb: "",
+    rector: "Sin rector asignado",
+    rectordocumento: "",
+    rectorcorreo: "",
+    rectortelefono: "",
+    rectorresolucion: "",
+    niveles: ["preescolar", "primaria"],
+    grados: ["transicion","1","2","3","4","5"],
+    sedes: 1,
+    modeloPedagogico: "Escuela Nueva",
+    resolucionAprobacion: "Res. 001122 de 2010",
+    secretariaEducacion: "Secretaría de Educación de Antioquia",
+    codigoETC: "ANT",
+    activa: false,
+    licencia: "basica",
+    vencimiento: "2025-03-31",
+    estudiantes: 0,
+    docentes: 0,
+  },
+];
+
+export const usuarios = [
+  { id: 1,  nombre: "Carlos Mendoza",      documento: "1234567890", correo: "carlos@admin.com",         rol: "SUPER_ADMIN",         institucionId: null, activo: true,  avatar: "CM" },
+  { id: 2,  nombre: "María González",      documento: "0987654321", correo: "maria@ie001.edu.co",        rol: "ADMIN_INSTITUCIONAL", institucionId: 1,    activo: true,  avatar: "MG" },
+  { id: 3,  nombre: "Pedro Ramírez",       documento: "1122334455", correo: "pedro@ie001.edu.co",        rol: "COORDINADOR",         institucionId: 1,    activo: true,  avatar: "PR" },
+  { id: 4,  nombre: "Ana Martínez",        documento: "5544332211", correo: "ana@ie001.edu.co",          rol: "SECRETARIA",          institucionId: 1,    activo: true,  avatar: "AM" },
+  { id: 5,  nombre: "Luis Herrera",        documento: "6677889900", correo: "luis@ie001.edu.co",         rol: "DOCENTE",             institucionId: 1,    activo: true,  avatar: "LH" },
+  { id: 6,  nombre: "Sandra López",        documento: "9988776655", correo: "sandra@ie001.edu.co",       rol: "DOCENTE",             institucionId: 1,    activo: true,  avatar: "SL" },
+  { id: 7,  nombre: "Jorge Castro",        documento: "1357924680", correo: "jorge@ie001.edu.co",        rol: "DIRECTOR_GRUPO",      institucionId: 1,    activo: true,  avatar: "JC" },
+  { id: 8,  nombre: "Claudia Ríos",        documento: "2468013579", correo: "claudia@ie001.edu.co",      rol: "PSICOORIENTADOR",     institucionId: 1,    activo: true,  avatar: "CR" },
+  // Estudiantes Séptimo A (cursoId: 2)
+  { id: 9,  nombre: "Juan Pérez",          documento: "3692581470", correo: "juan@estudiante.edu.co",    rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "JP", cursoId: 2, grado: "7A", promedio: 4.1 },
+  { id: 10, nombre: "Sofía Torres",        documento: "7418529630", correo: "sofia@estudiante.edu.co",   rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "ST", cursoId: 2, grado: "7A", promedio: 3.2 },
+  { id: 12, nombre: "Carlos Ruiz",         documento: "1593574862", correo: "carlos.r@estudiante.edu.co",rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "CR", cursoId: 2, grado: "7A", promedio: 3.5 },
+  { id: 13, nombre: "Laura Gómez",         documento: "9517534862", correo: "laura@estudiante.edu.co",   rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "LG", cursoId: 2, grado: "7A", promedio: 4.3 },
+  { id: 14, nombre: "Miguel Ángel Díaz",   documento: "7531598462", correo: "miguel@estudiante.edu.co",  rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "MA", cursoId: 2, grado: "7A", promedio: 3.1 },
+  { id: 15, nombre: "Valentina Moreno",    documento: "3571598462", correo: "vale@estudiante.edu.co",    rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "VM", cursoId: 2, grado: "7A", promedio: 4.5 },
+  { id: 16, nombre: "Andrés Castillo",     documento: "1597534862", correo: "andres@estudiante.edu.co",  rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "AC", cursoId: 2, grado: "7A", promedio: 3.8 },
+  // Estudiantes Sexto A (cursoId: 1)
+  { id: 17, nombre: "Daniela Vargas",      documento: "2584691370", correo: "daniela@estudiante.edu.co", rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "DV", cursoId: 1, grado: "6A", promedio: 4.0 },
+  { id: 18, nombre: "Sebastián Mora",      documento: "3691470258", correo: "sebas@estudiante.edu.co",   rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "SM", cursoId: 1, grado: "6A", promedio: 3.7 },
+  { id: 19, nombre: "Camila Ortiz",        documento: "1470258369", correo: "camila@estudiante.edu.co",  rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "CO", cursoId: 1, grado: "6A", promedio: 4.2 },
+  { id: 20, nombre: "Felipe Restrepo",     documento: "8520147369", correo: "felipe@estudiante.edu.co",  rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "FR", cursoId: 1, grado: "6A", promedio: 2.9 },
+  { id: 21, nombre: "Isabella Sánchez",    documento: "7410258369", correo: "isa@estudiante.edu.co",     rol: "ESTUDIANTE", institucionId: 1, activo: true,  avatar: "IS", cursoId: 1, grado: "6A", promedio: 3.9 },
+  // Padre
+  { id: 11, nombre: "Roberto Pérez",       documento: "8529637410", correo: "roberto@padre.com",         rol: "PADRE",      institucionId: 1, activo: true,  avatar: "RP", hijosIds: [9] },
+];
+
+export const cursos = [
+  { id: 1, nombre: "Sexto A", grado: 6, grupo: "A", institucionId: 1, periodoId: 1, directorId: 7, estudiantes: 28 },
+  { id: 2, nombre: "Séptimo A", grado: 7, grupo: "A", institucionId: 1, periodoId: 1, directorId: 7, estudiantes: 30 },
+  { id: 3, nombre: "Séptimo B", grado: 7, grupo: "B", institucionId: 1, periodoId: 1, directorId: 5, estudiantes: 27 },
+  { id: 4, nombre: "Octavo A", grado: 8, grupo: "A", institucionId: 1, periodoId: 1, directorId: 6, estudiantes: 25 },
+];
+
+export const materias = [
+  { id: 1, nombre: "Matemáticas", codigo: "MAT", cursoId: 2, docenteId: 5, intensidad: 5 },
+  { id: 2, nombre: "Español", codigo: "ESP", cursoId: 2, docenteId: 6, intensidad: 5 },
+  { id: 3, nombre: "Ciencias Naturales", codigo: "CN", cursoId: 2, docenteId: 5, intensidad: 4 },
+  { id: 4, nombre: "Ciencias Sociales", codigo: "CS", cursoId: 2, docenteId: 6, intensidad: 4 },
+  { id: 5, nombre: "Matemáticas", codigo: "MAT", cursoId: 1, docenteId: 5, intensidad: 5 },
+  { id: 6, nombre: "Español", codigo: "ESP", cursoId: 1, docenteId: 6, intensidad: 5 },
+];
+
+export const periodos = [
+  { id: 1, nombre: "Período 1 - 2025", numero: 1, año: 2025, inicio: "2025-01-20", fin: "2025-03-28", estado: "cerrado", institucionId: 1 },
+  { id: 2, nombre: "Período 2 - 2025", numero: 2, año: 2025, inicio: "2025-04-07", fin: "2025-06-20", estado: "activo", institucionId: 1 },
+  { id: 3, nombre: "Período 3 - 2025", numero: 3, año: 2025, inicio: "2025-07-14", fin: "2025-09-26", estado: "pendiente", institucionId: 1 },
+  { id: 4, nombre: "Período 4 - 2025", numero: 4, año: 2025, inicio: "2025-10-06", fin: "2025-11-28", estado: "pendiente", institucionId: 1 },
+];
+
+export const notas = [
+  { id: 1, estudianteId: 9, materiaId: 1, periodoId: 2, nota1: 4.5, nota2: 3.8, nota3: 4.2, promedio: 4.1, estado: "publicada" },
+  { id: 2, estudianteId: 9, materiaId: 2, periodoId: 2, nota1: 4.0, nota2: 4.5, nota3: 4.3, promedio: 4.3, estado: "publicada" },
+  { id: 3, estudianteId: 9, materiaId: 3, periodoId: 2, nota1: 3.5, nota2: 4.0, nota3: 3.8, promedio: 3.8, estado: "publicada" },
+  { id: 4, estudianteId: 10, materiaId: 1, periodoId: 2, nota1: 3.0, nota2: 3.2, nota3: 3.4, promedio: 3.2, estado: "publicada" },
+  { id: 5, estudianteId: 10, materiaId: 2, periodoId: 2, nota1: 2.8, nota2: 3.0, nota3: 2.9, promedio: 2.9, estado: "publicada" },
+];
+
+export const asistencia = [
+  { id: 1, estudianteId: 9, cursoId: 2, fecha: "2025-05-05", estado: "presente", materiaId: 1 },
+  { id: 2, estudianteId: 9, cursoId: 2, fecha: "2025-05-06", estado: "ausente", materiaId: 2 },
+  { id: 3, estudianteId: 10, cursoId: 2, fecha: "2025-05-05", estado: "presente", materiaId: 1 },
+  { id: 4, estudianteId: 10, cursoId: 2, fecha: "2025-05-06", estado: "tardanza", materiaId: 2 },
+];
+
+export const tareas = [
+  { id: 1, titulo: "Ejercicios de álgebra", materiaId: 1, cursoId: 2, docenteId: 5, fechaLimite: "2025-05-10", descripcion: "Resolver ejercicios del capítulo 5", estado: "activa", entregas: 18 },
+  { id: 2, titulo: "Ensayo sobre el medio ambiente", materiaId: 3, cursoId: 2, docenteId: 5, fechaLimite: "2025-05-12", descripcion: "Escribir ensayo de 2 páginas", estado: "activa", entregas: 22 },
+  { id: 3, titulo: "Lectura comprensiva", materiaId: 2, cursoId: 2, docenteId: 6, fechaLimite: "2025-05-08", descripcion: "Leer capítulo 3 y responder preguntas", estado: "vencida", entregas: 25 },
+];
+
+export const alertas = [
+  { id: 1, tipo: "riesgo_academico", estudianteId: 10, mensaje: "Sofía Torres tiene promedio 2.9 en Español - Riesgo alto", nivel: "alto", fecha: "2025-05-06", leida: false },
+  { id: 2, tipo: "inasistencia", estudianteId: 9, mensaje: "Juan Pérez registró ausencia el 06/05/2025", nivel: "medio", fecha: "2025-05-06", leida: false },
+  { id: 3, tipo: "tarea_vencida", estudianteId: 10, mensaje: "Sofía Torres no entregó Lectura comprensiva", nivel: "medio", fecha: "2025-05-08", leida: true },
+  { id: 4, tipo: "periodo", mensaje: "El Período 2 cierra el 20 de junio", nivel: "info", fecha: "2025-05-01", leida: false },
+];
+
+export const solicitudesCambioNota = [
+  { id: 1, docenteId: 5, estudianteId: 10, materiaId: 1, periodoId: 2, notaAnterior: 3.0, notaNueva: 3.5, motivo: "Error en digitación", estado: "pendiente", fecha: "2025-05-06" },
+];
+
+// ============================================================
+// DOCUMENTOS REQUERIDOS POR ROL
+// ============================================================
+
+export const documentosRequeridosPorRol = {
+  ESTUDIANTE: [
+    { id: "est_01", nombre: "Registro civil de nacimiento", categoria: "Personal", obligatorio: true },
+    { id: "est_02", nombre: "Tarjeta de identidad / Cédula", categoria: "Personal", obligatorio: true },
+    { id: "est_03", nombre: "Foto reciente 3x4", categoria: "Personal", obligatorio: true },
+    { id: "est_04", nombre: "Carné de vacunas", categoria: "Salud", obligatorio: true },
+    { id: "est_05", nombre: "Certificado médico / Aptitud física", categoria: "Salud", obligatorio: false },
+    { id: "est_06", nombre: "Boletín de notas año anterior", categoria: "Académico", obligatorio: false },
+    { id: "est_07", nombre: "Certificado de grado aprobado", categoria: "Académico", obligatorio: false },
+    { id: "est_08", nombre: "Paz y salvo institución anterior", categoria: "Académico", obligatorio: false },
+    { id: "est_09", nombre: "Carné de EPS / Afiliación salud", categoria: "Salud", obligatorio: true },
+    { id: "est_10", nombre: "SISBEN", categoria: "Socioeconómico", obligatorio: false },
+  ],
+  PADRE: [
+    { id: "pad_01", nombre: "Cédula de ciudadanía del acudiente", categoria: "Personal", obligatorio: true },
+    { id: "pad_02", nombre: "Registro civil (acredita relación con menor)", categoria: "Legal", obligatorio: false },
+    { id: "pad_03", nombre: "Declaración de acudiente (si no es padre/madre)", categoria: "Legal", obligatorio: false },
+    { id: "pad_04", nombre: "Documento de custodia o poder notarial", categoria: "Legal", obligatorio: false },
+  ],
+  DOCENTE: [
+    { id: "doc_01", nombre: "Cédula de ciudadanía", categoria: "Personal", obligatorio: true },
+    { id: "doc_02", nombre: "Hoja de vida SIGEP", categoria: "Profesional", obligatorio: true },
+    { id: "doc_03", nombre: "Foto reciente", categoria: "Personal", obligatorio: true },
+    { id: "doc_04", nombre: "Título de pregrado (acta + diploma)", categoria: "Académico", obligatorio: true },
+    { id: "doc_05", nombre: "Título de posgrado", categoria: "Académico", obligatorio: false },
+    { id: "doc_06", nombre: "Tarjeta profesional", categoria: "Profesional", obligatorio: false },
+    { id: "doc_07", nombre: "Registro en escalafón docente", categoria: "Profesional", obligatorio: true },
+    { id: "doc_08", nombre: "Certificados de experiencia laboral", categoria: "Profesional", obligatorio: true },
+    { id: "doc_09", nombre: "Antecedentes judiciales (Policía Nacional)", categoria: "Legal", obligatorio: true },
+    { id: "doc_10", nombre: "Antecedentes disciplinarios (Procuraduría)", categoria: "Legal", obligatorio: true },
+    { id: "doc_11", nombre: "Antecedentes fiscales (Contraloría)", categoria: "Legal", obligatorio: true },
+    { id: "doc_12", nombre: "Certificado medidas correctivas (RNMC)", categoria: "Legal", obligatorio: true },
+    { id: "doc_13", nombre: "Antecedentes abuso sexual - Ley 1918/2018", categoria: "Legal", obligatorio: true },
+    { id: "doc_14", nombre: "Declaración de bienes y rentas", categoria: "Legal", obligatorio: true },
+    { id: "doc_15", nombre: "Declaración de conflicto de intereses", categoria: "Legal", obligatorio: true },
+    { id: "doc_16", nombre: "Acta de posesión", categoria: "Vinculación", obligatorio: true },
+    { id: "doc_17", nombre: "Resolución de nombramiento", categoria: "Vinculación", obligatorio: true },
+    { id: "doc_18", nombre: "Afiliación EPS", categoria: "Seguridad Social", obligatorio: true },
+    { id: "doc_19", nombre: "Afiliación fondo de pensiones", categoria: "Seguridad Social", obligatorio: true },
+    { id: "doc_20", nombre: "Cuenta bancaria para nómina", categoria: "Seguridad Social", obligatorio: true },
+    { id: "doc_21", nombre: "Examen médico de ingreso", categoria: "Salud", obligatorio: true },
+  ],
+  DIRECTOR_GRUPO: [
+    { id: "dg_01", nombre: "Cédula de ciudadanía", categoria: "Personal", obligatorio: true },
+    { id: "dg_02", nombre: "Hoja de vida SIGEP", categoria: "Profesional", obligatorio: true },
+    { id: "dg_03", nombre: "Título de pregrado (acta + diploma)", categoria: "Académico", obligatorio: true },
+    { id: "dg_04", nombre: "Registro en escalafón docente", categoria: "Profesional", obligatorio: true },
+    { id: "dg_05", nombre: "Antecedentes judiciales (Policía Nacional)", categoria: "Legal", obligatorio: true },
+    { id: "dg_06", nombre: "Antecedentes disciplinarios (Procuraduría)", categoria: "Legal", obligatorio: true },
+    { id: "dg_07", nombre: "Antecedentes fiscales (Contraloría)", categoria: "Legal", obligatorio: true },
+    { id: "dg_08", nombre: "Antecedentes abuso sexual - Ley 1918/2018", categoria: "Legal", obligatorio: true },
+    { id: "dg_09", nombre: "Declaración de bienes y rentas", categoria: "Legal", obligatorio: true },
+    { id: "dg_10", nombre: "Acta de posesión", categoria: "Vinculación", obligatorio: true },
+    { id: "dg_11", nombre: "Resolución de nombramiento", categoria: "Vinculación", obligatorio: true },
+    { id: "dg_12", nombre: "Acto administrativo - Director de grupo", categoria: "Vinculación", obligatorio: true },
+    { id: "dg_13", nombre: "Afiliación EPS", categoria: "Seguridad Social", obligatorio: true },
+    { id: "dg_14", nombre: "Afiliación fondo de pensiones", categoria: "Seguridad Social", obligatorio: true },
+    { id: "dg_15", nombre: "Cuenta bancaria para nómina", categoria: "Seguridad Social", obligatorio: true },
+  ],
+  COORDINADOR: [
+    { id: "coo_01", nombre: "Cédula de ciudadanía", categoria: "Personal", obligatorio: true },
+    { id: "coo_02", nombre: "Hoja de vida SIGEP", categoria: "Profesional", obligatorio: true },
+    { id: "coo_03", nombre: "Foto reciente", categoria: "Personal", obligatorio: true },
+    { id: "coo_04", nombre: "Título de pregrado en educación", categoria: "Académico", obligatorio: true },
+    { id: "coo_05", nombre: "Posgrado en gestión / administración educativa", categoria: "Académico", obligatorio: true },
+    { id: "coo_06", nombre: "Registro en escalafón docente directivo", categoria: "Profesional", obligatorio: true },
+    { id: "coo_07", nombre: "Certificados de experiencia docente", categoria: "Profesional", obligatorio: true },
+    { id: "coo_08", nombre: "Antecedentes judiciales (Policía Nacional)", categoria: "Legal", obligatorio: true },
+    { id: "coo_09", nombre: "Antecedentes disciplinarios (Procuraduría)", categoria: "Legal", obligatorio: true },
+    { id: "coo_10", nombre: "Antecedentes fiscales (Contraloría)", categoria: "Legal", obligatorio: true },
+    { id: "coo_11", nombre: "Certificado medidas correctivas (RNMC)", categoria: "Legal", obligatorio: true },
+    { id: "coo_12", nombre: "Antecedentes abuso sexual - Ley 1918/2018", categoria: "Legal", obligatorio: true },
+    { id: "coo_13", nombre: "Declaración de bienes y rentas", categoria: "Legal", obligatorio: true },
+    { id: "coo_14", nombre: "Declaración de conflicto de intereses", categoria: "Legal", obligatorio: true },
+    { id: "coo_15", nombre: "Acta de posesión", categoria: "Vinculación", obligatorio: true },
+    { id: "coo_16", nombre: "Resolución de nombramiento cargo directivo", categoria: "Vinculación", obligatorio: true },
+    { id: "coo_17", nombre: "Afiliación EPS", categoria: "Seguridad Social", obligatorio: true },
+    { id: "coo_18", nombre: "Afiliación fondo de pensiones", categoria: "Seguridad Social", obligatorio: true },
+    { id: "coo_19", nombre: "Cuenta bancaria para nómina", categoria: "Seguridad Social", obligatorio: true },
+    { id: "coo_20", nombre: "Examen médico de ingreso", categoria: "Salud", obligatorio: true },
+  ],
+  PSICOORIENTADOR: [
+    { id: "psi_01", nombre: "Cédula de ciudadanía", categoria: "Personal", obligatorio: true },
+    { id: "psi_02", nombre: "Hoja de vida SIGEP", categoria: "Profesional", obligatorio: true },
+    { id: "psi_03", nombre: "Título de psicología o trabajo social", categoria: "Académico", obligatorio: true },
+    { id: "psi_04", nombre: "Tarjeta profesional de psicólogo (Ley 1090)", categoria: "Profesional", obligatorio: true },
+    { id: "psi_05", nombre: "Posgrado en psicología educativa / orientación", categoria: "Académico", obligatorio: false },
+    { id: "psi_06", nombre: "Registro en escalafón docente", categoria: "Profesional", obligatorio: true },
+    { id: "psi_07", nombre: "Certificados de experiencia en orientación", categoria: "Profesional", obligatorio: true },
+    { id: "psi_08", nombre: "Antecedentes judiciales (Policía Nacional)", categoria: "Legal", obligatorio: true },
+    { id: "psi_09", nombre: "Antecedentes disciplinarios (Procuraduría)", categoria: "Legal", obligatorio: true },
+    { id: "psi_10", nombre: "Antecedentes fiscales (Contraloría)", categoria: "Legal", obligatorio: true },
+    { id: "psi_11", nombre: "Antecedentes abuso sexual - Ley 1918/2018", categoria: "Legal", obligatorio: true },
+    { id: "psi_12", nombre: "Declaración de bienes y rentas", categoria: "Legal", obligatorio: true },
+    { id: "psi_13", nombre: "Acta de posesión", categoria: "Vinculación", obligatorio: true },
+    { id: "psi_14", nombre: "Resolución de nombramiento", categoria: "Vinculación", obligatorio: true },
+    { id: "psi_15", nombre: "Afiliación EPS", categoria: "Seguridad Social", obligatorio: true },
+    { id: "psi_16", nombre: "Afiliación fondo de pensiones", categoria: "Seguridad Social", obligatorio: true },
+    { id: "psi_17", nombre: "Cuenta bancaria para nómina", categoria: "Seguridad Social", obligatorio: true },
+    { id: "psi_18", nombre: "Examen médico de ingreso", categoria: "Salud", obligatorio: true },
+  ],
+  SECRETARIA: [
+    { id: "sec_01", nombre: "Cédula de ciudadanía", categoria: "Personal", obligatorio: true },
+    { id: "sec_02", nombre: "Hoja de vida SIGEP", categoria: "Profesional", obligatorio: true },
+    { id: "sec_03", nombre: "Foto reciente", categoria: "Personal", obligatorio: true },
+    { id: "sec_04", nombre: "Título técnico / tecnológico / profesional", categoria: "Académico", obligatorio: true },
+    { id: "sec_05", nombre: "Certificados de experiencia administrativa", categoria: "Profesional", obligatorio: true },
+    { id: "sec_06", nombre: "Certificado manejo herramientas ofimáticas", categoria: "Profesional", obligatorio: false },
+    { id: "sec_07", nombre: "Antecedentes judiciales (Policía Nacional)", categoria: "Legal", obligatorio: true },
+    { id: "sec_08", nombre: "Antecedentes disciplinarios (Procuraduría)", categoria: "Legal", obligatorio: true },
+    { id: "sec_09", nombre: "Antecedentes fiscales (Contraloría)", categoria: "Legal", obligatorio: true },
+    { id: "sec_10", nombre: "Antecedentes abuso sexual - Ley 1918/2018", categoria: "Legal", obligatorio: true },
+    { id: "sec_11", nombre: "Declaración de bienes y rentas", categoria: "Legal", obligatorio: true },
+    { id: "sec_12", nombre: "Acta de posesión", categoria: "Vinculación", obligatorio: true },
+    { id: "sec_13", nombre: "Resolución de nombramiento / Contrato", categoria: "Vinculación", obligatorio: true },
+    { id: "sec_14", nombre: "Afiliación EPS", categoria: "Seguridad Social", obligatorio: true },
+    { id: "sec_15", nombre: "Afiliación fondo de pensiones", categoria: "Seguridad Social", obligatorio: true },
+    { id: "sec_16", nombre: "Afiliación ARL", categoria: "Seguridad Social", obligatorio: true },
+    { id: "sec_17", nombre: "Cuenta bancaria para nómina", categoria: "Seguridad Social", obligatorio: true },
+    { id: "sec_18", nombre: "Examen médico de ingreso", categoria: "Salud", obligatorio: true },
+  ],
+  ADMIN_INSTITUCIONAL: [
+    { id: "adm_01", nombre: "Cédula de ciudadanía", categoria: "Personal", obligatorio: true },
+    { id: "adm_02", nombre: "Hoja de vida SIGEP", categoria: "Profesional", obligatorio: true },
+    { id: "adm_03", nombre: "Título profesional (administración / sistemas / afín)", categoria: "Académico", obligatorio: true },
+    { id: "adm_04", nombre: "Certificados de experiencia en gestión de sistemas", categoria: "Profesional", obligatorio: true },
+    { id: "adm_05", nombre: "Antecedentes judiciales (Policía Nacional)", categoria: "Legal", obligatorio: true },
+    { id: "adm_06", nombre: "Antecedentes disciplinarios (Procuraduría)", categoria: "Legal", obligatorio: true },
+    { id: "adm_07", nombre: "Antecedentes fiscales (Contraloría)", categoria: "Legal", obligatorio: true },
+    { id: "adm_08", nombre: "Antecedentes abuso sexual - Ley 1918/2018", categoria: "Legal", obligatorio: true },
+    { id: "adm_09", nombre: "Declaración de bienes y rentas", categoria: "Legal", obligatorio: true },
+    { id: "adm_10", nombre: "Acuerdo de confidencialidad y HABEAS DATA", categoria: "Legal", obligatorio: true },
+    { id: "adm_11", nombre: "Acta de posesión / Contrato", categoria: "Vinculación", obligatorio: true },
+    { id: "adm_12", nombre: "Resolución de designación", categoria: "Vinculación", obligatorio: true },
+    { id: "adm_13", nombre: "Afiliación EPS", categoria: "Seguridad Social", obligatorio: true },
+    { id: "adm_14", nombre: "Afiliación fondo de pensiones", categoria: "Seguridad Social", obligatorio: true },
+    { id: "adm_15", nombre: "Cuenta bancaria para nómina", categoria: "Seguridad Social", obligatorio: true },
+  ],
+};
+
+// Documentos registrados por usuario (estado de cada documento)
+export const documentosUsuarios = [
+  // Estudiante Juan Pérez (id: 9)
+  { id: 1, usuarioId: 9, docId: "est_01", estado: "entregado", fecha: "2025-01-15", observacion: "" },
+  { id: 2, usuarioId: 9, docId: "est_02", estado: "entregado", fecha: "2025-01-15", observacion: "" },
+  { id: 3, usuarioId: 9, docId: "est_03", estado: "entregado", fecha: "2025-01-15", observacion: "" },
+  { id: 4, usuarioId: 9, docId: "est_04", estado: "entregado", fecha: "2025-01-15", observacion: "" },
+  { id: 5, usuarioId: 9, docId: "est_09", estado: "pendiente", fecha: null, observacion: "" },
+  // Estudiante Sofía Torres (id: 10)
+  { id: 6, usuarioId: 10, docId: "est_01", estado: "entregado", fecha: "2025-01-16", observacion: "" },
+  { id: 7, usuarioId: 10, docId: "est_02", estado: "pendiente", fecha: null, observacion: "Vence tarjeta de identidad" },
+  { id: 8, usuarioId: 10, docId: "est_03", estado: "pendiente", fecha: null, observacion: "" },
+  { id: 9, usuarioId: 10, docId: "est_09", estado: "pendiente", fecha: null, observacion: "" },
+  // Docente Luis Herrera (id: 5)
+  { id: 10, usuarioId: 5, docId: "doc_01", estado: "entregado", fecha: "2025-01-10", observacion: "" },
+  { id: 11, usuarioId: 5, docId: "doc_02", estado: "entregado", fecha: "2025-01-10", observacion: "" },
+  { id: 12, usuarioId: 5, docId: "doc_04", estado: "entregado", fecha: "2025-01-10", observacion: "" },
+  { id: 13, usuarioId: 5, docId: "doc_09", estado: "entregado", fecha: "2025-01-10", observacion: "" },
+  { id: 14, usuarioId: 5, docId: "doc_10", estado: "entregado", fecha: "2025-01-10", observacion: "" },
+  { id: 15, usuarioId: 5, docId: "doc_13", estado: "vencido", fecha: "2024-12-01", observacion: "Requiere renovación anual" },
+  { id: 16, usuarioId: 5, docId: "doc_16", estado: "entregado", fecha: "2025-01-10", observacion: "" },
+  { id: 17, usuarioId: 5, docId: "doc_17", estado: "entregado", fecha: "2025-01-10", observacion: "" },
+  // Coordinador Pedro Ramírez (id: 3)
+  { id: 18, usuarioId: 3, docId: "coo_01", estado: "entregado", fecha: "2025-01-08", observacion: "" },
+  { id: 19, usuarioId: 3, docId: "coo_04", estado: "entregado", fecha: "2025-01-08", observacion: "" },
+  { id: 20, usuarioId: 3, docId: "coo_12", estado: "pendiente", fecha: null, observacion: "" },
+  { id: 21, usuarioId: 3, docId: "coo_15", estado: "entregado", fecha: "2025-01-08", observacion: "" },
+];
+
+export const auditoria = [
+  { id: 1, usuarioId: 2, accion: "Creación de usuario", detalle: "Creó usuario Juan Pérez (ESTUDIANTE)", fecha: "2025-04-15 09:23:00", ip: "192.168.1.10" },
+  { id: 2, usuarioId: 5, accion: "Registro de nota", detalle: "Registró nota 4.5 en Matemáticas - Juan Pérez", fecha: "2025-05-05 10:15:00", ip: "192.168.1.15" },
+  { id: 3, usuarioId: 9, accion: "Inicio de sesión", detalle: "Inicio de sesión exitoso", fecha: "2025-05-07 07:45:00", ip: "192.168.1.20" },
+  { id: 4, usuarioId: 5, accion: "Solicitud cambio nota", detalle: "Solicitó cambio de nota para Sofía Torres en Matemáticas", fecha: "2025-05-06 14:30:00", ip: "192.168.1.15" },
+];
+
+export const estadisticasGlobales = {
+  totalInstituciones: 3,
+  institucionesActivas: 2,
+  totalUsuarios: 1240,
+  totalEstudiantes: 530,
+  licenciasPremium: 1,
+  licenciasBasicas: 2,
+  backupsRecientes: 5,
+  alertasTecnicas: 2,
+};
+
+// Credenciales mock para login
+export const credenciales = [
+  { correo: "carlos@admin.com", password: "admin123", usuarioId: 1 },
+  { correo: "maria@ie001.edu.co", password: "admin123", usuarioId: 2 },
+  { correo: "pedro@ie001.edu.co", password: "admin123", usuarioId: 3 },
+  { correo: "ana@ie001.edu.co", password: "admin123", usuarioId: 4 },
+  { correo: "luis@ie001.edu.co", password: "admin123", usuarioId: 5 },
+  { correo: "sandra@ie001.edu.co", password: "admin123", usuarioId: 6 },
+  { correo: "jorge@ie001.edu.co", password: "admin123", usuarioId: 7 },
+  { correo: "claudia@ie001.edu.co", password: "admin123", usuarioId: 8 },
+  { correo: "juan@estudiante.edu.co", password: "admin123", usuarioId: 9 },
+  { correo: "roberto@padre.com", password: "admin123", usuarioId: 11 },
+];
+
+// ============================================================
+// CUESTIONARIOS TIPO ICFES
+// ============================================================
+
+export const cuestionarios = [
+  {
+    id: 1,
+    titulo: "Evaluación de Matemáticas - Álgebra",
+    descripcion: "Cuestionario sobre ecuaciones lineales y cuadráticas",
+    materiaId: 1,
+    cursoId: 2,
+    docenteId: 5,
+    periodoId: 2,
+    tipo: "icfes",
+    duracionMinutos: 45,
+    fechaCreacion: "2025-05-01",
+    fechaInicio: "2025-05-10",
+    fechaFin: "2025-05-15",
+    estado: "activo",
+    intentosMaximos: 1,
+    mostrarResultados: true,
+    puntajeTotal: 100,
+  },
+  {
+    id: 2,
+    titulo: "Comprensión de Lectura - Español",
+    descripcion: "Evaluación de comprensión lectora y análisis de textos",
+    materiaId: 2,
+    cursoId: 2,
+    docenteId: 6,
+    periodoId: 2,
+    tipo: "icfes",
+    duracionMinutos: 60,
+    fechaCreacion: "2025-05-02",
+    fechaInicio: "2025-05-12",
+    fechaFin: "2025-05-17",
+    estado: "activo",
+    intentosMaximos: 2,
+    mostrarResultados: true,
+    puntajeTotal: 100,
+  },
+];
+
+export const preguntas = [
+  // Preguntas del cuestionario 1 (Matemáticas)
+  {
+    id: 1,
+    cuestionarioId: 1,
+    tipo: "seleccion_multiple",
+    enunciado: "¿Cuál es la solución de la ecuación 2x + 5 = 15?",
+    opciones: [
+      { id: "a", texto: "x = 5", correcta: true },
+      { id: "b", texto: "x = 10", correcta: false },
+      { id: "c", texto: "x = 7.5", correcta: false },
+      { id: "d", texto: "x = 2.5", correcta: false },
+    ],
+    puntaje: 10,
+    orden: 1,
+  },
+  {
+    id: 2,
+    cuestionarioId: 1,
+    tipo: "seleccion_multiple",
+    enunciado: "¿Cuál es el discriminante de la ecuación x² - 4x + 4 = 0?",
+    opciones: [
+      { id: "a", texto: "0", correcta: true },
+      { id: "b", texto: "16", correcta: false },
+      { id: "c", texto: "8", correcta: false },
+      { id: "d", texto: "-16", correcta: false },
+    ],
+    puntaje: 10,
+    orden: 2,
+  },
+  {
+    id: 3,
+    cuestionarioId: 1,
+    tipo: "seleccion_multiple",
+    enunciado: "La función f(x) = 3x² + 2x - 1 tiene:",
+    opciones: [
+      { id: "a", texto: "Un mínimo en x = -1/3", correcta: true },
+      { id: "b", texto: "Un máximo en x = -1/3", correcta: false },
+      { id: "c", texto: "Un mínimo en x = 1/3", correcta: false },
+      { id: "d", texto: "Un máximo en x = 1/3", correcta: false },
+    ],
+    puntaje: 10,
+    orden: 3,
+  },
+  {
+    id: 4,
+    cuestionarioId: 1,
+    tipo: "abierta",
+    enunciado: "Resuelve paso a paso la ecuación cuadrática x² - 5x + 6 = 0 y explica cada paso.",
+    puntaje: 20,
+    orden: 4,
+  },
+  // Preguntas del cuestionario 2 (Español)
+  {
+    id: 5,
+    cuestionarioId: 2,
+    tipo: "seleccion_multiple",
+    enunciado: "En el texto 'El río caudaloso', la palabra 'caudaloso' es:",
+    opciones: [
+      { id: "a", texto: "Adjetivo", correcta: true },
+      { id: "b", texto: "Sustantivo", correcta: false },
+      { id: "c", texto: "Verbo", correcta: false },
+      { id: "d", texto: "Adverbio", correcta: false },
+    ],
+    puntaje: 10,
+    orden: 1,
+  },
+  {
+    id: 6,
+    cuestionarioId: 2,
+    tipo: "seleccion_multiple",
+    enunciado: "¿Cuál es la idea principal de un texto?",
+    opciones: [
+      { id: "a", texto: "El mensaje central que el autor quiere transmitir", correcta: true },
+      { id: "b", texto: "Un detalle secundario del texto", correcta: false },
+      { id: "c", texto: "La conclusión del texto", correcta: false },
+      { id: "d", texto: "La introducción del texto", correcta: false },
+    ],
+    puntaje: 10,
+    orden: 2,
+  },
+  {
+    id: 7,
+    cuestionarioId: 2,
+    tipo: "abierta",
+    enunciado: "Analiza el siguiente texto e identifica el tipo de texto (narrativo, expositivo, argumentativo) y justifica tu respuesta con tres características del texto.",
+    puntaje: 30,
+    orden: 3,
+  },
+];
+
+export const respuestasCuestionario = [
+  {
+    id: 1,
+    cuestionarioId: 1,
+    estudianteId: 9,
+    fechaInicio: "2025-05-10T10:00:00",
+    fechaFin: "2025-05-10T10:35:00",
+    estado: "completado",
+    intento: 1,
+  },
+  {
+    id: 2,
+    cuestionarioId: 1,
+    estudianteId: 10,
+    fechaInicio: "2025-05-10T10:05:00",
+    fechaFin: null,
+    estado: "en_progreso",
+    intento: 1,
+  },
+];
+
+export const respuestasPreguntas = [
+  // Respuestas de Juan Pérez (estudianteId: 9) al cuestionario 1
+  {
+    id: 1,
+    respuestaCuestionarioId: 1,
+    preguntaId: 1,
+    respuesta: "a",
+    correcta: true,
+    puntajeObtenido: 10,
+  },
+  {
+    id: 2,
+    respuestaCuestionarioId: 1,
+    preguntaId: 2,
+    respuesta: "a",
+    correcta: true,
+    puntajeObtenido: 10,
+  },
+  {
+    id: 3,
+    respuestaCuestionarioId: 1,
+    preguntaId: 3,
+    respuesta: "b",
+    correcta: false,
+    puntajeObtenido: 0,
+  },
+  {
+    id: 4,
+    respuestaCuestionarioId: 1,
+    preguntaId: 4,
+    respuesta: "Para resolver x² - 5x + 6 = 0, uso la fórmula cuadrática: x = (-b ± √(b²-4ac)) / 2a. Donde a=1, b=-5, c=6. El discriminante es 25-24=1. Entonces x = (5 ± 1)/2, dando x=3 y x=2.",
+    correcta: null,
+    puntajeObtenido: 15,
+    observacion: "Buen procedimiento, pero falta explicar cada paso con más detalle.",
+  },
+];
+
+export const resultadosCuestionario = [
+  {
+    id: 1,
+    respuestaCuestionarioId: 1,
+    estudianteId: 9,
+    cuestionarioId: 1,
+    puntajeTotal: 35,
+    puntajeMaximo: 50,
+    porcentaje: 70,
+    estado: "calificado",
+    fechaCalificacion: "2025-05-10T11:00:00",
+    calificadoPor: 5,
+  },
+];
